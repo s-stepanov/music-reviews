@@ -1,0 +1,23 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "koa": "^2.5.3",
+    "koa-http-request": "^2.2.1",
+    "koa-router": "^7.4.0",
+    "nconf": "^0.10.0",
+    "typeface-roboto": "0.0.54"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.4"
+  }
+}

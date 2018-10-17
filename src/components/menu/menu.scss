@@ -1,0 +1,51 @@
+@import '../../styles/variables.scss';
+
+.app-menu {
+  display: flex;
+  color: white;
+  background-color: $primary-material-color;
+  height: 65px;
+
+  &__hamburger-container {
+    margin-left: 20px;
+    margin-right: 20px;
+    padding-top: 20px;
+
+    &__hamburger {
+      cursor: pointer;
+    }
+  }
+
+  &__title-container {
+    flex-grow: 1;
+    align-self: center;
+
+    &__title {
+      font-size: 24px;
+    }
+  }
+
+  &__buttons {
+    flex-grow: 1;
+    align-self: center;
+
+    &__login-button {
+      padding: 10px;
+      color: white;
+      background-color: $primary-material-color;
+      font-size: 18px;
+      border: solid 2px $light-material-color;
+      border-radius: 3px;
+      float: right;
+      transition: 300ms;
+      cursor: pointer;
+      margin-right: 20px;
+      outline: none;
+
+      &:hover {
+        background-color: $dark-material-color;
+        transition: 300ms;
+      }
+    }
+  }
+}
