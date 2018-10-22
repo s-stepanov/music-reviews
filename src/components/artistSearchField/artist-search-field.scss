@@ -1,38 +1,38 @@
 @import '../../styles/variables.scss';
 
-.app-artist-search-field {
-  display: flex;
-  flex-grow: 1;
+.app-artist-search {
   padding-top: 50px;
   padding-bottom: 50px;
-  align-items: center;
-  justify-content: center;
 
-  &__input {
-    padding-left: 5px;
-    display: inline-block;
-    height: 30px;
-    outline: none;
-    width: 30%;
-    font-size: 18px;
-  }
+  &__form {
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
 
-  &__button {
-    display: inline-block;
-    color: white;
-    background-color: $primary-material-color;
-    font-size: 18px;
-    padding-top: 5px;
-    border: none;
-    transition: 300ms;
-    cursor: pointer;
-    margin-right: 20px;
-    outline: none;
-    height: 36px;
+    &__input {
+      padding-left: 5px;
+      display: inline-block;
+      height: 30px;
+      outline: none;
+      font-size: 18px;
+    }
 
-    &:hover {
-      background-color: $dark-material-color;
+    &__button {
+      display: inline-block;
+      color: white;
+      background-color: $primary-material-color;
+      font-size: 18px;
+      padding-top: 5px;
+      border: none;
       transition: 300ms;
+      cursor: pointer;
+      outline: none;
+      height: 36px;
+
+      &:hover {
+        background-color: $dark-material-color;
+        transition: 300ms;
+      }
     }
   }
 }

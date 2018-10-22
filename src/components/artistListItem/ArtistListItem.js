@@ -8,7 +8,7 @@ class ArtistListItem extends Component {
   }
 
   render() {
-    const { title, description, image, listenersCount } = this.props;
+    const { name, image, listenersCount } = this.props;
 
     return (
       <div className="app-artists-list-item">
@@ -17,14 +17,11 @@ class ArtistListItem extends Component {
             <img className="app-artists-list-item-header__image" src={image}></img>
           </div>
           <div className="app-artists-list-item-header__title">
-            <span>{title}</span>
+            <span>{name}</span>
           </div>
           <div className="app-artists-list-item-header__listeners-count">
             {listenersCount} listeners
           </div>
-        </div>
-        <div className="app-artists-list-item__description"> 
-          {description}
         </div>
       </div>
     )
@@ -32,7 +29,7 @@ class ArtistListItem extends Component {
 }
 
 ArtistListItem.propTypes = {
-  title: PropTypes.string,
+  name: PropTypes.string,
   image: PropTypes.string,
   description: PropTypes.string,
   listenersCount: PropTypes.string

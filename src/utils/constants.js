@@ -1,0 +1,6 @@
+const FETCH_STATUSES = {
+  SUCCESS: 'SUCCESS',
+  FAILURE: 'FAILURE'
+};
+
+export { FETCH_STATUSES };

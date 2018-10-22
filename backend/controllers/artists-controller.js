@@ -1,14 +1,37 @@
-'use strict';
-
 const { ArtistsService } = require('../services');
 
 const searchArtist = async ctx => {
-  const { term } = ctx.query;
-  const artist = await ArtistsService.searchArtist(term);
-  ctx.body = {
-    status: 200,
-    data: artist
-  };
+  const { artist } = ctx.query;
+  try {
+    const artists = await ArtistsService.searchArtist(artist);
+    ctx.body = {
+      status: 200,
+      data: artists
+    }
+  } catch (e) {
+    ctx.body = {
+      status: 500,
+      data: [],
+      error: e
+    }
+  }
 };
 
-module.exports = { searchArtist };
+const getArtistInfoByMbid = async ctx => {
+  const { mbid } = ctx.params;
+  try {
+    const data = await ArtistsService.getArtistInfoByMbid(mbid);
+    ctx.body = {
+      status: 200,
+      data
+    }
+  } catch (e) {
+    ctx.body = {
+      status: 500,
+      data: {},
+      error: e
+    }
+  }
+};
+
+module.exports = { searchArtist, getArtistInfoByMbid };

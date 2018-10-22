@@ -6,8 +6,8 @@
     box-shadow: 3px 3px 2px #888888;
     padding: 20px;
     width: 500px;
-    margin: auto;
-    
+    margin: auto auto 20px;
+
     &-header {
       display: flex;
       align-items: center;
@@ -24,10 +24,11 @@
         border-radius: 50%;
         object-fit: cover;
         cursor: pointer;
+        width: 150px;
       }
 
       &__listeners-count {
-
+        display: block;
       }
     }
 

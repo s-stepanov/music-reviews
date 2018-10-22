@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Menu from './components/menu/Menu';
 import ArtistSearchField from './components/artistSearchField/ArtistSearchField';
-import ArtistsList from './components/artistsList/ArtistsList';
+import ArtistsListContainer from "./containers/ArtistsListContainer";
 
 class App extends Component {
   render() {
@@ -10,7 +10,7 @@ class App extends Component {
       <div>
         <Menu></Menu>
         <ArtistSearchField></ArtistSearchField>
-        <ArtistsList></ArtistsList>
+        <ArtistsListContainer></ArtistsListContainer>
       </div>
     );
   }
