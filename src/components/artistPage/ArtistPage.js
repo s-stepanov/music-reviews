@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import * as PropTypes from 'prop-types';
 import AlbumsList from "../albumsList/AlbumsList";
+import './artist-page.scss';
 
 class ArtistPage extends Component {
   constructor(props) {
@@ -14,17 +15,18 @@ class ArtistPage extends Component {
     return (
       <div className={'app-artist-page'}>
         <div className={'app-artist-page-header'}>
-          <div className={'app-artist-page-header__photo'}>
-            <img src={image}/>
+          <div className={'app-artist-page-header__photo-container'}>
+            <img src={image}
+                 className={'app-artist-page-header__photo-container__photo'}/>
           </div>
           <div className={'app-artist-page-header__name'}>
             {name}
           </div>
           <div className={'app-artist-page-header__stats'}>
           </div>
-          <div className={'app-artist-page-header__bio'}>
-            {bio}
-          </div>
+        </div>
+        <div className={'app-artist-page__bio'}>
+          {bio}
         </div>
         <div className={'app-artist-page-albums-list'}>
           <AlbumsList albums={albums}/>

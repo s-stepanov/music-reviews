@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import * as PropTypes from 'prop-types';
 import AlbumsListItem from "../albumsListItem/AlbumsListItem";
+import './albums-list.scss';
 
 class AlbumsList extends Component {
   constructor(props) {
@@ -16,8 +17,11 @@ class AlbumsList extends Component {
     }) : [];
 
     return (
-      <div className={'app-albums-list'}>
-        {albums}
+      <div>
+        <h3>Albums: </h3>
+        <div className={'app-albums-list'}>
+          {albums}
+        </div>
       </div>
     )
   }

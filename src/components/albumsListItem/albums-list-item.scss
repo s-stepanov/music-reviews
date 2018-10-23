@@ -1,0 +1,20 @@
+@import "../../styles/variables";
+
+.app-albums-list__item {
+  margin-right: 20px;
+  margin-bottom: 20px;
+
+  &__album-name {
+    a {
+      color: $dark-material-color;
+      text-decoration: none;
+    }
+  }
+
+  &__album-image-container {
+    &__image {
+      width: 250px;
+      height: 250px;
+    }
+  }
+}

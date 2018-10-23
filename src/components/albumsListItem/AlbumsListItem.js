@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import * as PropTypes from 'prop-types';
 import { withRouter, Link } from 'react-router-dom';
+import './albums-list-item.scss';
 
 class AlbumsListItem extends Component {
   constructor(props) {
@@ -12,14 +13,14 @@ class AlbumsListItem extends Component {
 
     return (
       <div className={'app-albums-list__item'}>
+        <div className={'app-albums-list__item__album-image-container'}>
+          <img className={'app-albums-list__item__album-image-container__image'} src={image}/>
+        </div>
         <div className={'app-albums-list__item__album-artist'}>
           {artist.name}
         </div>
         <div className={'app-albums-list__item__album-name'}>
           <Link to={`/albums/${mbid}`}>{name}</Link>
-        </div>
-        <div className={'app-albums-list__item__album-image'}>
-          <img src={image}/>
         </div>
       </div>
     )

@@ -1,0 +1,35 @@
+.app-artist-page {
+  &-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+
+    &__photo-container {
+      flex-grow: 1;
+      &__photo {
+        border-radius: 50%;
+        object-fit: cover;
+      }
+    }
+
+    &__name {
+      flex-grow: 1;
+      font-size: 24px;
+      font-weight: bold;
+      padding-left: 20px;
+    }
+
+    &__stats {
+      flex-grow: 1;
+    }
+  }
+
+  &__bio {
+    padding: 20px;
+  }
+
+  &-albums-list {
+    padding: 20px;
+  }
+}
