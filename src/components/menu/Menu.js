@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import Icon from '@material-ui/core/Icon';
 import './menu.scss';
+import { withRouter, Link } from 'react-router-dom';
 
 class Menu extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      appName: 'Music Reviews App'
-    };
   }
 
   render() {
@@ -19,7 +17,7 @@ class Menu extends Component {
           </Icon>
         </div>
         <div className="app-menu__title-container">
-          <span className="app-menu__title-container__title">Music Reviews App</span>
+          <Link to={'/'} className="app-menu__title-container__title">Music Reviews App</Link>
         </div>
         <div className="app-menu__buttons">
           <button className="app-menu__buttons__login-button">Sign In</button>
@@ -29,4 +27,4 @@ class Menu extends Component {
   }
 }
 
-export default Menu;
+export default withRouter(Menu);

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ArtistListItem from '../artistListItem/ArtistListItem';
 import PropTypes from 'prop-types';
+import ArtistSearchField from "../artistSearchField/ArtistSearchField";
 
 class ArtistsList extends Component {
   render() {
@@ -8,13 +9,18 @@ class ArtistsList extends Component {
       return <ArtistListItem key={mbid}
                              name={name}
                              listenersCount={listeners}
-                             image={image}>
+                             image={image}
+                             mbid={mbid}
+      >
       </ArtistListItem>
     });
 
     return (
-      <div className="app-artists-list">
-        {artistsList}
+      <div>
+        <ArtistSearchField />
+        <div className="app-artists-list">
+          {artistsList}
+        </div>
       </div>
     )
   }

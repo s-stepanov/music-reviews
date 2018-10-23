@@ -25,19 +25,29 @@ const searchArtist = async searchTerm => {
 };
 
 const getArtistInfoByMbid = async mbid => {
-  const REQUEST_URL = `${LASTFM_API_URL}/?method=artist.getinfo&mbid=${mbid}&api_key=${LASTFM_API_KEY}&format=json`;
+  const ARTIST_REQUEST_URL = `${LASTFM_API_URL}/?method=artist.getinfo&mbid=${mbid}&api_key=${LASTFM_API_KEY}&format=json`;
+  const ALBUMS_REQUEST_URL = `${LASTFM_API_URL}/?method=artist.gettopalbums&mbid=${mbid}&api_key=${LASTFM_API_KEY}&format=json`;
 
-  const data = await axios.get(REQUEST_URL);
-
-  if (!data) {
-    return null;
-  }
-
-  const { artist } = data.data;
+  const [ artistResponse, albumsResponse ] = await Promise.all([axios.get(ARTIST_REQUEST_URL),
+                                                                axios.get(ALBUMS_REQUEST_URL)]);
+  const { artist } = artistResponse.data;
+  const { topalbums } = albumsResponse.data;
 
   return {
-
-  }
+    name: artist.name,
+    mbid: artist.mbid,
+    image: artist.image[3]['#text'],
+    stats: artist.stats,
+    bio: artist.bio.content,
+    albums: topalbums.album.map(album => {
+      return {
+        name: album.name,
+        mbid: album.mbid,
+        artist: album.artist,
+        image: album.image[3]['#text']
+      };
+    }).filter(album => !!album.mbid)
+  };
 };
 
 module.exports = { searchArtist, getArtistInfoByMbid };

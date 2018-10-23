@@ -1,35 +1,33 @@
 import React, { Component } from "react";
 import * as PropTypes from 'prop-types';
+import AlbumsList from "../albumsList/AlbumsList";
 
 class ArtistPage extends Component {
   constructor(props) {
     super(props);
+    this.props.getArtistInfo(this.props.mbid);
   }
 
   render() {
-    const { photo, name, stats, bio, albums, reviews } = this.props;
+    const { image, name, stats, bio, albums } = this.props.artist;
 
     return (
       <div className={'app-artist-page'}>
         <div className={'app-artist-page-header'}>
           <div className={'app-artist-page-header__photo'}>
-            <img src={photo}/>
+            <img src={image}/>
           </div>
           <div className={'app-artist-page-header__name'}>
             {name}
           </div>
           <div className={'app-artist-page-header__stats'}>
-            {stats}
           </div>
           <div className={'app-artist-page-header__bio'}>
             {bio}
           </div>
         </div>
         <div className={'app-artist-page-albums-list'}>
-          {albums}
-        </div>
-        <div className={'app-artist-page-latest-reviews'}>
-          {reviews}
+          <AlbumsList albums={albums}/>
         </div>
       </div>
     );
@@ -42,8 +40,10 @@ ArtistPage.propTypes = {
     listeners: PropTypes.string,
     plays: PropTypes.string
   }),
+  mbid: PropTypes.string,
   albums: PropTypes.array,
-  reviews: PropTypes.array
+  reviews: PropTypes.array,
+  getArtistInfo: PropTypes.func
 };
 
 export default ArtistPage;

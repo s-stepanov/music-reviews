@@ -10,9 +10,12 @@ export const searchArtists = (searchTerm) => {
   }
 };
 
-export const getArtistInfo = (artist) => {
+export const getArtistInfo = (mbid) => {
   return dispatch => {
-
+    dispatch(fetchArtistInfo());
+    axios.get(`http://localhost:3001/api/artist/${mbid}`)
+      .then(({data}) => dispatch(artistInfoFetched(data)))
+      .catch(err => dispatch(artistInfoFetchFailed(err)));
   }
 };
 

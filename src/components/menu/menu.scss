@@ -19,7 +19,12 @@
   &__title-container {
     flex-grow: 1;
     align-self: center;
+    cursor: pointer;
 
+    a {
+      color: white;
+      text-decoration: none;
+    }
     &__title {
       font-size: 24px;
     }

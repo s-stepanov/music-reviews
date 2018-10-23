@@ -2,7 +2,8 @@ import * as actionTypes from './../actions/actionTypes';
 
 const initialState = {
   status: '',
-  data: []
+  artistsList: [],
+  artistInfo: {}
 };
 
 export default function (state = initialState, action) {
@@ -16,13 +17,30 @@ export default function (state = initialState, action) {
       return {
         ...state,
         isFetching: false,
-        data: action.payload.data ? action.payload.data : [],
+        artistsList: action.payload.data ? action.payload.data : [],
         status: action.payload.status
       };
     case actionTypes.FETCH_ARTISTS_LIST_FAILURE:
       return {
         ...state,
         isFetching: false,
+      };
+    case actionTypes.FETCH_ARTIST_INFO:
+      return {
+        ...state,
+        isFetching: true
+      };
+    case actionTypes.FETCH_ARTIST_INFO_SUCCESS:
+      return {
+        ...state,
+        isFetching: false,
+        artistInfo: action.payload.data
+      };
+    case actionTypes.FETCH_ARTIST_INFO_FAILURE:
+      return {
+        ...state,
+        isFetching: false,
+        error: action.payload.error
       };
     default:
       return {
