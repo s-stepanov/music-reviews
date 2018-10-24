@@ -11,9 +11,12 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.18.0",
+    "bluebird": "latest",
     "koa": "^2.5.3",
+    "koa-body": "^4.0.4",
     "koa-http-request": "^2.2.1",
     "koa-router": "^7.4.0",
+    "mongoose": "latest",
     "nconf": "^0.10.0",
     "typeface-roboto": "0.0.54"
   },

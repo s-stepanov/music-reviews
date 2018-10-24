@@ -1,0 +1,26 @@
+const Mongoose = require('mongoose');
+const config = require('../config/config');
+Mongoose.Promise = require('bluebird');
+
+const DATABASE_URL = config.get('DATABASE_URL');
+const APP_NAME = config.get('NAME');
+
+const connect = async () => {
+  try {
+    let mongoose = await Mongoose.connect(DATABASE_URL,
+      { dbName: APP_NAME });
+    if (config.get('NODE_ENV') === 'development') {
+      for (let collection in mongoose.connection.collections) {
+        Mongoose.connection.collections[collection].remove(() => {});
+      }
+    }
+    return mongoose;
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+const User = require('./user');
+const Review = require('./review');
+
+module.exports = { connect, User, Review };
