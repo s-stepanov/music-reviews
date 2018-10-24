@@ -38,7 +38,7 @@ const getArtistInfoByMbid = async mbid => {
     mbid: artist.mbid,
     image: artist.image[3]['#text'],
     stats: artist.stats,
-    bio: artist.bio.content,
+    bio: artist.bio,
     albums: topalbums.album.map(album => {
       return {
         name: album.name,

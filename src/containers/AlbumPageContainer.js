@@ -5,7 +5,8 @@ import { getAlbumInfo } from "../actions/albumsActions";
 const mapStateToProps = (state, ownProps) => {
   return {
     album: state.albums.album,
-    mbid: ownProps.match.params.mbid
+    mbid: ownProps.match.params.mbid,
+    isLoading: state.albums.isFetching
   }
 };
 

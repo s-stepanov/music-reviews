@@ -6,7 +6,8 @@ import { withRouter } from "react-router-dom";
 const mapStateToProps = (state, ownProps) => {
   return {
     artist: state.artists.artistInfo,
-    mbid: ownProps.match.params.mbid
+    mbid: ownProps.match.params.mbid,
+    isLoading: state.artists.isFetching
   }
 };
 

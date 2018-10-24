@@ -16,9 +16,6 @@ class AlbumsListItem extends Component {
         <div className={'app-albums-list__item__album-image-container'}>
           <img className={'app-albums-list__item__album-image-container__image'} src={image}/>
         </div>
-        <div className={'app-albums-list__item__album-artist'}>
-          {artist.name}
-        </div>
         <div className={'app-albums-list__item__album-name'}>
           <Link to={`/albums/${mbid}`}>{name}</Link>
         </div>

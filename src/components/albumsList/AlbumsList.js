@@ -18,7 +18,7 @@ class AlbumsList extends Component {
 
     return (
       <div>
-        <h3>Albums: </h3>
+        <h4>Albums</h4>
         <div className={'app-albums-list'}>
           {albums}
         </div>

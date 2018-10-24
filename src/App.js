@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import './App.css';
+import './App.scss';
 import Menu from './components/menu/Menu';
-import ArtistsListContainer from "./containers/ArtistsListContainer";
-import ArtistPageContainer from "./containers/ArtistPageContainer";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
-import AlbumPageContainer from "./containers/AlbumPageContainer";
+import { BrowserRouter } from "react-router-dom";
+import Sidebar from "./components/sidebar/Sidebar";
+import ContentContainer from "./containers/ContentContainer";
 
 class App extends Component {
   render() {
@@ -12,11 +11,14 @@ class App extends Component {
       <BrowserRouter>
         <div>
           <Menu/>
-          <Switch>
-            <Route path={'/artists/:mbid'} component={ArtistPageContainer} />
-            <Route path={'/albums/:mbid'} component={AlbumPageContainer}/>
-            <Route path={'/'} component={ArtistsListContainer}/>
-          </Switch>
+          <div className={'row no-gutters'}>
+            <div className={'col-2'}>
+              <Sidebar/>
+            </div>
+            <div className={'col-10'}>
+              <ContentContainer {...this.props}/>
+            </div>
+          </div>
         </div>
       </BrowserRouter>
     );

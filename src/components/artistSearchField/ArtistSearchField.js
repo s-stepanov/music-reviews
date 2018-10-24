@@ -28,6 +28,7 @@ class ArtistSearchField extends Component {
                  component={'input'}
                  type={'text'}
                  className={'app-artist-search__form__input'}
+                 placeholder={'Search artists...'}
           />
           <button className="app-artist-search__form__button">
             <Icon>search</Icon>

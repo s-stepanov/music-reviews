@@ -12,16 +12,16 @@ class ArtistListItem extends Component {
     const { name, image, listenersCount, mbid } = this.props;
 
     return (
-      <div className="app-artists-list-item">
-        <div className="app-artists-list-item-header">
+      <div className="app-artists-list__item">
+        <div className="app-artists-list__item-header">
           <div>
-            <img className="app-artists-list-item-header__image" src={image} alt={''}/>
+            <img className="app-artists-list__item-header__image" src={image} alt={''}/>
           </div>
-          <div className="app-artists-list-item-header__title">
+          <div className="app-artists-list__item-header__title">
             <span><Link to={`/artists/${mbid}`}>{name}</Link></span>
           </div>
-          <div className="app-artists-list-item-header__listeners-count">
-            {listenersCount} listeners
+          <div className="app-artists-list__item-header__listeners-count">
+            <span>{listenersCount} listeners</span>
           </div>
         </div>
       </div>

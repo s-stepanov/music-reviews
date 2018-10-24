@@ -1,0 +1,10 @@
+@import '../../styles/variables';
+
+.app-sidebar {
+  background-color: $main-background-color;
+  height: calc(100vh - 45px);
+  width: 100%;
+  border-right: solid 1px $border-color;
+  padding: 10px;
+  font-size: 14px;
+}

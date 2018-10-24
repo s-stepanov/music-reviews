@@ -3,7 +3,8 @@ import ArtistsList from "../components/artistsList/ArtistsList";
 
 const mapStateToProps = state => {
   return {
-    artists: state.artists.artistsList
+    artists: state.artists.artistsList,
+    isLoading: state.artists.isFetching
   };
 };
 

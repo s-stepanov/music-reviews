@@ -3,7 +3,8 @@ import * as actionTypes from './../actions/actionTypes';
 const initialState = {
   status: '',
   artistsList: [],
-  artistInfo: {}
+  artistInfo: {},
+  isFetching: false
 };
 
 export default function (state = initialState, action) {

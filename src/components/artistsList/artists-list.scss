@@ -1,0 +1,16 @@
+@import '../../styles/variables';
+
+.app-artists-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  background-color: white;
+  border-radius: 2px;
+  border: solid 1px $border-color;
+  flex-grow: 1;
+
+  &__loader {
+    margin: auto;
+    width: 200px;
+  }
+}
