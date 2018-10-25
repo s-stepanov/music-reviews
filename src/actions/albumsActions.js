@@ -4,7 +4,7 @@ import axios from 'axios';
 export const getAlbumInfo = mbid => {
   return dispatch => {
     dispatch(fetchAlbum());
-    axios.get(`http://localhost:3001/api/album/${mbid}`)
+    axios.get(`/api/album/${mbid}`)
       .then(({data}) => dispatch(albumFetched(data)))
       .catch(({err}) => dispatch(albumFetchFailure(err)))
   }

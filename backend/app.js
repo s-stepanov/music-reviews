@@ -4,8 +4,6 @@ const routes = require('./routes');
 const config = require('./config/config');
 const bodyParser = require('koa-body');
 
-
-
 let init = async () => {
   const database = require('./models');
   await database.connect();

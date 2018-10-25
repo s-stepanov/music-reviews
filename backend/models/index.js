@@ -8,10 +8,11 @@ const APP_NAME = config.get('NAME');
 const connect = async () => {
   try {
     let mongoose = await Mongoose.connect(DATABASE_URL,
-      { dbName: APP_NAME });
+      { dbName: APP_NAME,
+        useNewUrlParser: true });
     if (config.get('NODE_ENV') === 'development') {
       for (let collection in mongoose.connection.collections) {
-        Mongoose.connection.collections[collection].remove(() => {});
+        Mongoose.connection.collections[collection].deleteOne(() => {});
       }
     }
     return mongoose;
