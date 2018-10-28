@@ -22,13 +22,13 @@
     @include make-col(3);
 
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-content: center;
     padding: 20px;
     border-right: solid 1px $border-color;
 
     &__photo-container {
-      justify-self: center;
-
+      align-self: center;
       &__photo {
         width: 200px;
       }
@@ -53,5 +53,12 @@
       padding: 20px;
       font-size: 12px;
     }
+  }
+
+  &__album-reviews-container {
+    @include make-col(9);
+
+    padding: 20px;
+    font-size: 12px;
   }
 }

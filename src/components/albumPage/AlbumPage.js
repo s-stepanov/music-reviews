@@ -3,6 +3,8 @@ import { withRouter } from 'react-router-dom';
 import * as PropTypes from 'prop-types';
 import Loader from 'react-loader-spinner';
 import './album-page.scss';
+import ReviewsList from "../reviewsList/ReviewsList";
+import CreateReviewModal from "../createReviewModal/createReviewModal";
 
 class AlbumPage extends Component {
   constructor(props) {
@@ -15,6 +17,7 @@ class AlbumPage extends Component {
 
   componentDidMount() {
     this.props.getAlbumInfo(this.props.mbid);
+    this.props.getReviews(this.props.mbid);
   }
 
   toggleBio() {
@@ -50,6 +53,7 @@ class AlbumPage extends Component {
               <img src={image}
                    className={'app-album-page__album-info-container__photo-container__photo'}/>
             </div>
+            <CreateReviewModal/>
           </div>
           <div className={'app-album-page__album-description-container'}>
             <div className={'app-album-page__album-description-container__description'}>
@@ -58,6 +62,10 @@ class AlbumPage extends Component {
               <span onClick={this.toggleBio}>
                 {this.state.showFullDescription ? ' Show less' : ' Show more'}
                 </span>
+            </div>
+            <div className={'app-album-page__album-reviews-container'}>
+              <h4>Album Reviews</h4>
+              <ReviewsList reviews={this.props.reviews}/>
             </div>
           </div>
         </div>
@@ -79,7 +87,9 @@ AlbumPage.propTypes = {
   }),
   mbid: PropTypes.string,
   getAlbumInfo: PropTypes.func,
-  isLoading: PropTypes.bool
+  getReviews: PropTypes.func,
+  isLoading: PropTypes.bool,
+  reviews: PropTypes.array
 };
 
 export default withRouter(AlbumPage);

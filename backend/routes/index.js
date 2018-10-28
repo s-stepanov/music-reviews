@@ -1,7 +1,6 @@
 const Router = require('koa-router');
 const router = new Router();
 const serve = require('koa2-static-middleware');
-const send = require('koa-send');
 
 const artistsRoutes = require('./artists-routes');
 const albumsRoutes = require('./albums-routes');
@@ -15,8 +14,8 @@ router.use(reviewsRoutes);
 router.use(authRoutes);
 router.use(usersRoutes);
 
-// router.get('/dist/*', serve('public/dist'));
-// router.get('/public/img/*', serve('public/img'));
-// router.get('/*', ctx => send(ctx, 'public/index.html'));
+router.get('/artists/dist/*', serve('public/dist'));
+router.get('/albums/dist/*', serve('public/dist'));
+router.get('/dist/*', serve('public/dist'));
 
 module.exports = router.routes();

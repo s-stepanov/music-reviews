@@ -1,15 +1,6 @@
 import * as actionTypes from './actionTypes';
 import axios from 'axios';
 
-export const login = () => {
-  return dispatch => {
-    dispatch(loginRequest());
-    axios.get('/api/auth/google')
-      .then(({data}) => loginSuccess(data))
-      .catch((err) => loginFailure(err))
-  };
-};
-
 export const logout = () => {
   return dispatch => {
     dispatch(logoutRequest());
@@ -50,25 +41,5 @@ export const currentUserFetched = data => {
   return {
     type: actionTypes.CURRENT_USER_FETCHED,
     payload: data
-  };
-};
-
-export const loginSuccess = (data) => {
-  return {
-    type: actionTypes.LOGIN_SUCCESS,
-    payload: data
-  };
-};
-
-export const loginFailure = (error) => {
-  return {
-    type: actionTypes.LOGIN_FAILURE,
-    error
-  };
-};
-
-export const loginRequest = () => {
-  return {
-    type: actionTypes.LOGIN
   };
 };

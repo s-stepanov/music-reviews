@@ -11,4 +11,8 @@ const createReview = async (mbid, content, score) => {
   return review;
 };
 
-module.exports = { createReview };
+const getReviewsForAlbum = async (mbid) => {
+  return await Review.find({ mbid });
+};
+
+module.exports = { createReview, getReviewsForAlbum };

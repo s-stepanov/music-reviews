@@ -1,0 +1,37 @@
+@import "../../styles/variables";
+
+.app-create-review-modal {
+  &__button {
+    margin-top: 20px;
+    margin-right: auto;
+    margin-left: auto;
+    display: block;
+    padding: 10px;
+    color: white;
+    background-color: $primary-material-color;
+    border-radius: 3px;
+    border: none;
+    cursor: pointer;
+  }
+
+  &__window {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    width: 516px;
+    background-color: white;
+    padding: 8px;
+
+    &__header {
+      text-align: center;
+    }
+
+    &__text-field {
+      display: block;
+      width: 500px;
+      margin-left: 50px;
+    }
+  }
+
+}

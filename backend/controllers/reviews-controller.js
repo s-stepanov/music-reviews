@@ -8,12 +8,24 @@ const createReview = async ctx => {
       status: 201,
       data: review
     };
-  } catch (e) {
-    ctx.body = {
-      status: 500,
-      error: e
-    }
+  } catch (error) {
+    ctx.status = 500;
+    ctx.body = { error };
   }
 };
 
-module.exports = { createReview };
+const getReviewsForAlbum = async ctx => {
+  try {
+    const { mbid } = ctx.params;
+    const reviews = await ReviewsService.getReviewsForAlbum(mbid);
+    ctx.status = 200;
+    ctx.body = {
+      data: reviews
+    };
+  } catch (error) {
+    ctx.status = 500;
+    ctx.body = { error };
+  }
+};
+
+module.exports = { createReview, getReviewsForAlbum };
