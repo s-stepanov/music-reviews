@@ -1,12 +1,20 @@
 import React, { Component } from 'react';
 import Icon from '@material-ui/core/Icon';
 import './menu.scss';
-import { withRouter, Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import ArtistSearchField from "../artistSearchField/ArtistSearchField";
+import { connect } from 'react-redux';
+import * as PropTypes from 'prop-types';
+import { logout } from "../../actions/authActions";
 
 class Menu extends Component {
   constructor(props) {
     super(props);
+    this.logout = this.logout.bind(this);
+  }
+
+  logout() {
+    this.props.logout();
   }
 
   render() {
@@ -22,11 +30,33 @@ class Menu extends Component {
           <ArtistSearchField />
         </div>
         <div className="app-menu__buttons">
-          <button className="app-menu__buttons__login-button">Login</button>
+          <div className="app-menu__buttons__user-info">
+            <img src={this.props.user && this.props.user.photo}/>
+            {this.props.user ? this.props.user.name : ''}
+          </div>
+          <button className="app-menu__buttons__button" onClick={this.logout}><Icon>exit_to_app</Icon></button>
         </div>
       </header>
     );
   }
 }
+Menu.propTypes = {
+  logout: PropTypes.func,
+  user: PropTypes.object
+};
 
-export default withRouter(Menu);
+const mapStateToProps = state => {
+  return {
+    user: state.auth.currentUser
+  }
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    logout: () => {
+      dispatch(logout())
+    }
+  }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Menu));

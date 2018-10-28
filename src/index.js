@@ -8,17 +8,23 @@ import reducer from './reducers';
 import { Provider } from "react-redux";
 import thunkMiddleware from 'redux-thunk'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import createHistory from 'history/createBrowserHistory';
+import { ConnectedRouter, routerMiddleware } from 'react-router-redux'
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
+const history = createHistory();
+
 const store = createStore(
   reducer,
-  composeEnhancers(applyMiddleware(thunkMiddleware))
+  composeEnhancers(applyMiddleware(routerMiddleware(history), thunkMiddleware))
 );
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <ConnectedRouter history={history}>
+      <App />
+    </ConnectedRouter>
   </Provider>,
   document.getElementById('root'));
 

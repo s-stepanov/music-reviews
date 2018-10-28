@@ -1,6 +1,7 @@
 const { ArtistsService } = require('../services');
 
 const searchArtist = async ctx => {
+  console.log(ctx.req.user);
   const { artist } = ctx.query;
   try {
     const artists = await ArtistsService.searchArtist(artist);

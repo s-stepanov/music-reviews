@@ -1,28 +1,41 @@
 import React, { Component } from 'react';
 import './App.scss';
-import Menu from './components/menu/Menu';
-import { BrowserRouter } from "react-router-dom";
-import Sidebar from "./components/sidebar/Sidebar";
-import ContentContainer from "./containers/ContentContainer";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import MainPage from "./components/mainPage/MainPage";
+import Login from "./components/login/Login";
+import PrivateRoute from "./components/privateRoute/PrivateRoute";
+import { getCurrentUser } from "./actions/authActions";
+import connect from "react-redux/es/connect/connect";
 
 class App extends Component {
+  componentDidMount() {
+    this.props.getCurrentUser();
+  }
+
   render() {
     return (
       <BrowserRouter>
-        <div>
-          <Menu/>
-          <div className={'row no-gutters'}>
-            <div className={'col-2'}>
-              <Sidebar/>
-            </div>
-            <div className={'col-10'}>
-              <ContentContainer {...this.props}/>
-            </div>
-          </div>
-        </div>
+        <Switch>
+          <Route path={'/login'} component={Login} {...this.props}/>
+          <PrivateRoute path={'/'} component={MainPage} {...this.props}/>
+        </Switch>
       </BrowserRouter>
     );
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    currentUser: state.auth.currentUser,
+    isAuthenticated: state.auth.isAuthenticated,
+    isFetching: state.auth.isFetching
+  }
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    getCurrentUser: () => dispatch(getCurrentUser())
+  }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

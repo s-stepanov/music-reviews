@@ -50,10 +50,27 @@
 
   &__buttons {
     @include make-col(2);
-    align-self: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    &__login-button {
-      padding: 5px 10px;
+    &__user-info {
+      img {
+        display: inline;
+        object-fit: cover;
+        border-radius: 50%;
+        width: 35px;
+        margin-right: 5px;
+      }
+
+      font-size: 14px;
+      font-weight: bold;
+      margin-right: 10px;
+      word-wrap: break-spaces;
+    }
+
+    &__button {
+      padding: 10px 5px 5px;
       color: white;
       background-color: $primary-material-color;
       font-size: 14px;

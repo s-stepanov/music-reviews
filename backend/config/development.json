@@ -1,8 +1,11 @@
 {
   "LASTFM_API_URL": "http://ws.audioscrobbler.com/2.0",
   "LASTFM_API_KEY": "b1184759992d2997b69701ee880c94f7",
-  "API_PORT": 3001,
+  "API_PORT": 3000,
   "DATABASE_URL": "mongodb://127.0.0.1:27017",
   "NAME": "MusicReviewsApp",
-  "NODE_ENV": "development"
+  "HOST": "http://localhost:3000",
+  "NODE_ENV": "development",
+  "GOOGLE_CLIENT_ID": "422340253896-suove02skj0ghk9aitguoeior8b7ug34.apps.googleusercontent.com",
+  "GOOGLE_CLIENT_SECRET": "UNFG1PJpyG4hX2KywJqwSVyZ"
 }
