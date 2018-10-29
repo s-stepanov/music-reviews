@@ -52,12 +52,15 @@
     &__description {
       padding: 20px;
       font-size: 12px;
+
+      &__toggle {
+        cursor: pointer;
+        color: $primary-material-color;
+      }
     }
   }
 
   &__album-reviews-container {
-    @include make-col(9);
-
     padding: 20px;
     font-size: 12px;
   }

@@ -18,9 +18,15 @@ const logout = async ctx => {
 const getCurrentUser = async ctx => {
   try {
     const user = await User.findById(ctx.req.user.id);
+    const response = {
+      id: user._id,
+      name: user.name,
+      email: user.email,
+      photo: user.photo
+    };
     return ctx.body = {
       status: '200',
-      data: user
+      data: response
     }
   } catch (error) {
     ctx.body = {

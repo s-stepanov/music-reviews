@@ -5,17 +5,17 @@ export const getReviews = mbid => {
   return dispatch => {
     dispatch(getReiewsRequest());
     axios.get(`/api/reviews/${mbid}`)
-      .then(({data}) => getReviewsSuccess(data))
-      .then((err) => getReviewsFailure(err));
+      .then(({data}) => dispatch(getReviewsSuccess(data)))
+      .catch((err) => dispatch(getReviewsFailure(err)));
   };
 };
 
-export const postReview = (mbid, score, content) => {
+export const postReview = (mbid, score, content, authorId) => {
   return dispatch => {
     dispatch(postReviewRequest());
-    axios.post(`/api/reviews`, { mbid, score, content })
-      .then(({data}) => postReviewSuccess(data))
-      .then((err) => postReviewFailure(err));
+    axios.post(`/api/reviews`, { mbid, score, content, authorId })
+      .then(({data}) => dispatch(postReviewSuccess(data)))
+      .catch((err) => dispatch(postReviewFailure(err)));
   };
 };
 

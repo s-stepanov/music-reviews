@@ -1,14 +1,39 @@
 @import "../../styles/variables";
 
-.reviews-list-item {
-  margin-bottom: 10px;
+.app-reviews-list__item {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin-bottom: 20px;
   border: solid 1px $border-color;
+  padding: 10px;
 
   &__header {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
 
+    &__user {
+      font-size: 14px;
+      font-weight: bold;
+
+      img {
+        border-radius: 50%;
+        object-fit: cover;
+        width: 40px;
+        margin-right: 20px;
+      }
+    }
+
+    &__score {
+      font-size: 14px;
+      margin-left: 10px;
+      padding-top: 8px;
+    }
   }
 
   &__content {
-
+    display: block;
+    font-size: 14px;
   }
 }

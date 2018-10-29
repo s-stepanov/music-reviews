@@ -12,6 +12,11 @@
     border-radius: 3px;
     border: none;
     cursor: pointer;
+    outline: none;
+
+    &:focus {
+      outline: none;
+    }
   }
 
   &__window {
@@ -22,6 +27,19 @@
     width: 516px;
     background-color: white;
     padding: 8px;
+
+    &__rating {
+      display: flex;
+      align-items: center;
+
+      &__stars {
+        padding-top: 8px;
+      }
+
+      &__label {
+        margin-right: 10px;
+      }
+    }
 
     &__header {
       text-align: center;

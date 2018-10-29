@@ -12,6 +12,11 @@ const reviewSchema = new mongoose.Schema({
   score: {
     type: String,
     required: true
+  },
+  author: {
+    ref: 'User',
+    required: true,
+    type: mongoose.Schema.ObjectId
   }
 });
 

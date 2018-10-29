@@ -2,8 +2,8 @@ const { ReviewsService } = require('../services');
 
 const createReview = async ctx => {
   try {
-    const { mbid, content, score } = ctx.request.body;
-    const review = await ReviewsService.createReview(mbid, content, score);
+    const { mbid, content, score, authorId } = ctx.request.body;
+    const review = await ReviewsService.createReview(mbid, content, score, authorId);
     ctx.body = {
       status: 201,
       data: review

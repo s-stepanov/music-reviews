@@ -20,6 +20,8 @@ const store = createStore(
   composeEnhancers(applyMiddleware(routerMiddleware(history), thunkMiddleware))
 );
 
+window.__MUI_USE_NEXT_TYPOGRAPHY_VARIANTS__ = true;
+
 ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>

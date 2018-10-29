@@ -4,7 +4,7 @@ import * as PropTypes from 'prop-types';
 import Loader from 'react-loader-spinner';
 import './album-page.scss';
 import ReviewsList from "../reviewsList/ReviewsList";
-import CreateReviewModal from "../createReviewModal/createReviewModal";
+import CreateReviewModal from "../createReviewModal/CreateReviewModal";
 
 class AlbumPage extends Component {
   constructor(props) {
@@ -53,13 +53,13 @@ class AlbumPage extends Component {
               <img src={image}
                    className={'app-album-page__album-info-container__photo-container__photo'}/>
             </div>
-            <CreateReviewModal/>
+            <CreateReviewModal mbid={this.props.mbid}/>
           </div>
           <div className={'app-album-page__album-description-container'}>
             <div className={'app-album-page__album-description-container__description'}>
               <h4>Description</h4>
               {wiki && (this.state.showFullDescription ? wiki.content : wiki.summary)}
-              <span onClick={this.toggleBio}>
+              <span className={'app-album-page__album-description-container__description__toggle'} onClick={this.toggleBio}>
                 {this.state.showFullDescription ? ' Show less' : ' Show more'}
                 </span>
             </div>
