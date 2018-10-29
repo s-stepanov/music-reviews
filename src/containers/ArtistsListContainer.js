@@ -8,12 +8,6 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-
-  };
-};
-
-const ArtistsListContainer = connect(mapStateToProps, mapDispatchToProps)(ArtistsList);
+const ArtistsListContainer = connect(mapStateToProps)(ArtistsList);
 
 export default ArtistsListContainer;

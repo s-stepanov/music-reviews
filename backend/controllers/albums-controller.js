@@ -5,15 +5,14 @@ const getAlbumInfoByMbid = async ctx => {
 
   try {
     const album = await AlbumsService.getAlbumInfoByMbid(mbid);
+    ctx.status = 200;
     ctx.body = {
-      status: 200,
       data: album
     };
-  } catch (e) {
+  } catch (error) {
+    ctx.status = 200;
     ctx.body = {
-      status: 500,
-      data: {},
-      error: e
+      error
     };
   }
 };

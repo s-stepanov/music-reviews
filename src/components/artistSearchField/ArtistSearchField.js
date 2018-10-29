@@ -14,7 +14,6 @@ class ArtistSearchField extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-
     const { artist } = this.props;
     this.props.searchArtist(artist);
     this.props.history.push('/');

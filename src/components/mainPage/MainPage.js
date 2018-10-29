@@ -4,7 +4,7 @@ import Sidebar from "../sidebar/Sidebar";
 import ContentContainer from "../../containers/ContentContainer";
 import '../../App.scss';
 
-const MainPage = (props) => {
+const MainPage = props => {
   return (
     <div>
       <Menu {...props}/>

@@ -5,7 +5,7 @@ export const getReviews = mbid => {
   return dispatch => {
     dispatch(getReiewsRequest());
     axios.get(`/api/reviews/${mbid}`)
-      .then(({data}) => dispatch(getReviewsSuccess(data)))
+      .then(({ data }) => dispatch(getReviewsSuccess(data)))
       .catch((err) => dispatch(getReviewsFailure(err)));
   };
 };
@@ -14,7 +14,7 @@ export const postReview = (mbid, score, content, authorId) => {
   return dispatch => {
     dispatch(postReviewRequest());
     axios.post(`/api/reviews`, { mbid, score, content, authorId })
-      .then(({data}) => dispatch(postReviewSuccess(data)))
+      .then(({ data }) => dispatch(postReviewSuccess(data)))
       .catch((err) => dispatch(postReviewFailure(err)));
   };
 };
@@ -31,7 +31,7 @@ export const getReviewsSuccess = (data) => {
     type: actionTypes.GET_REVIEWS_SUCCESS,
     isFetching: false,
     payload: data
-  }
+  };
 };
 
 export const getReviewsFailure = (error) => {
@@ -39,14 +39,14 @@ export const getReviewsFailure = (error) => {
     type: actionTypes.GET_REVIEWS_FAILURE,
     isFetching: false,
     error
-  }
+  };
 };
 
 export const postReviewRequest = () => {
   return {
     type: actionTypes.POST_REVIEW_REQUEST,
     isFetching: true
-  }
+  };
 };
 
 export const postReviewSuccess = (data) => {
@@ -54,7 +54,7 @@ export const postReviewSuccess = (data) => {
     type: actionTypes.POST_REVIEW_SUCCESS,
     isFetching: false,
     payload: data
-  }
+  };
 };
 
 export const postReviewFailure = (error) => {
@@ -62,5 +62,5 @@ export const postReviewFailure = (error) => {
     type: actionTypes.POST_REVIEW_FAILURE,
     isFetching: false,
     error
-  }
+  };
 };

@@ -4,15 +4,14 @@ const searchArtist = async ctx => {
   const { artist } = ctx.query;
   try {
     const artists = await ArtistsService.searchArtist(artist);
+    ctx.status = 200;
     ctx.body = {
-      status: 200,
       data: artists
     }
-  } catch (e) {
+  } catch (error) {
+    ctx.status = 500;
     ctx.body = {
-      status: 500,
-      data: [],
-      error: e
+      error
     }
   }
 };
@@ -21,15 +20,14 @@ const getArtistInfoByMbid = async ctx => {
   const { mbid } = ctx.params;
   try {
     const data = await ArtistsService.getArtistInfoByMbid(mbid);
+    ctx.status = 200;
     ctx.body = {
-      status: 200,
       data
     }
-  } catch (e) {
+  } catch (error) {
+    ctx.status = 500;
     ctx.body = {
-      status: 500,
-      data: {},
-      error: e
+      error
     }
   }
 };

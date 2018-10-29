@@ -12,7 +12,7 @@ export const logout = () => {
 export const logoutRequest = () => {
   return {
     type: actionTypes.LOGOUT
-  }
+  };
 };
 
 export const getCurrentUser = () => {
@@ -23,7 +23,7 @@ export const getCurrentUser = () => {
         dispatch(currentUserFetched(data));
       })
       .catch(() => {
-        if (window.location.href !== 'http://localhost:3000/login') {
+        if (!window.location.href.endsWith('/login')) {
           window.location.href = '/login';
         }
       });
@@ -35,7 +35,6 @@ export const fetchCurrentUser = () => {
     type: actionTypes.FETCH_CURRENT_USER,
   };
 };
-
 
 export const currentUserFetched = data => {
   return {

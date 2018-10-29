@@ -5,16 +5,16 @@ export const getAlbumInfo = mbid => {
   return dispatch => {
     dispatch(fetchAlbum());
     axios.get(`/api/album/${mbid}`)
-      .then(({data}) => dispatch(albumFetched(data)))
-      .catch(({err}) => dispatch(albumFetchFailure(err)))
-  }
+      .then(({ data }) => dispatch(albumFetched(data)))
+      .catch(({ err }) => dispatch(albumFetchFailure(err)))
+  };
 };
 
 export const fetchAlbum = () => {
   return {
     type: actionTypes.FETCH_ALBUM_INFO,
     isFetching: true
-  }
+  };
 };
 
 export const albumFetched = album => {
@@ -30,5 +30,5 @@ export const albumFetchFailure = error => {
     type: actionTypes.FETCH_ALBUM_INFO_FAILURE,
     isFetching: false,
     error: error
-  }
+  };
 };
