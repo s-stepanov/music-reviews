@@ -17,6 +17,7 @@ class ArtistSearchField extends Component {
 
     const { artist } = this.props;
     this.props.searchArtist(artist);
+    this.props.history.push('/');
   }
 
   render() {

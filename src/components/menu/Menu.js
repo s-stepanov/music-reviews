@@ -27,7 +27,7 @@ class Menu extends Component {
           <Link to={'/'} className="app-menu__title-container__title">Music Reviews App</Link>
         </div>
         <div className='app-menu__search-container'>
-          <ArtistSearchField />
+          <ArtistSearchField {...this.props}/>
         </div>
         <div className="app-menu__buttons">
           <div className="app-menu__buttons__user-info">

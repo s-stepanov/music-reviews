@@ -7,7 +7,7 @@ import '../../App.scss';
 const MainPage = (props) => {
   return (
     <div>
-      <Menu/>
+      <Menu {...props}/>
       <div className={'row no-gutters'}>
         <div className={'col-2'}>
           <Sidebar/>
