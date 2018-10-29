@@ -1,4 +1,4 @@
-##Music reviews app
+## Music reviews app
 Scripts:
 * `npm install` to install dependencies
 * `npm run docker-start` to run mongoDB in docker
