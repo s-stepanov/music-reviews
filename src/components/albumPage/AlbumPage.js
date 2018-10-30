@@ -5,6 +5,7 @@ import Loader from 'react-loader-spinner';
 import './album-page.scss';
 import ReviewsList from "../reviewsList/ReviewsList";
 import CreateReviewModal from "../createReviewModal/CreateReviewModal";
+import StarRatingComponent from "react-star-rating-component";
 
 class AlbumPage extends Component {
   constructor(props) {
@@ -27,7 +28,7 @@ class AlbumPage extends Component {
   }
 
   render() {
-    const { name, image, wiki } = this.props.album;
+    const { name, image, wiki, averageRating } = this.props.album;
 
     if (this.props.isLoading) {
       return (
@@ -53,6 +54,13 @@ class AlbumPage extends Component {
               <img src={image}
                    className={'app-album-page__album-info-container__photo-container__photo'}/>
             </div>
+            <StarRatingComponent
+              name="rating"
+              editing={false}
+              starCount={10}
+              value={+averageRating}
+              className={'app-album-page__album-info-container__rating'}
+            />
             <CreateReviewModal mbid={this.props.mbid}/>
           </div>
           <div className={'app-album-page__album-description-container'}>

@@ -33,6 +33,10 @@ const getArtistInfoByMbid = async mbid => {
   const { artist } = artistResponse.data;
   const { topalbums } = albumsResponse.data;
 
+  const template = new RegExp(`<a\\b[^>]*>(.*?)<\\/a>`);
+  artist.bio.content = artist.bio.content.replace(template, '');
+  artist.bio.summary = artist.bio.summary.replace(template, '');
+
   return {
     name: artist.name,
     mbid: artist.mbid,

@@ -8,7 +8,7 @@ class ArtistPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      showFullBio: false
+      showFullBio: false,
     };
     this.toggleBio = this.toggleBio.bind(this);
   }
@@ -54,8 +54,10 @@ class ArtistPage extends Component {
           <div className={'app-artist-page__artist-description-container'}>
             <div className={'app-artist-page__artist-description-container__bio'}>
               <h4>Biography</h4>
-              {bio && bio.summary}
-              <span onClick={this.toggleBio}>{this.state.showFullBio ? 'Show less' : 'Show more'}</span>
+              {bio && (this.state.showFullBio ? bio.content : bio.summary)}
+              <span className={'app-artist-page__artist-description-container__bio__toggle'}
+                    onClick={this.toggleBio}>{this.state.showFullBio ? 'Show less' : 'Show more'}
+                    </span>
             </div>
             <div className={'app-artist-page__artist-description-container__albums-list'}>
               <AlbumsList albums={albums}/>

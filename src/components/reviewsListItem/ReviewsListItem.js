@@ -4,7 +4,7 @@ import * as PropTypes from 'prop-types';
 import StarRatingComponent from 'react-star-rating-component';
 
 const ReviewsListItem = props => {
-  const { score, content, author } = props.review;
+  const { rating, content, author } = props.review;
 
   return (
     <div className='app-reviews-list__item'>
@@ -14,10 +14,10 @@ const ReviewsListItem = props => {
           <span>{author.name}</span>
         </div>
         <StarRatingComponent
-          name="rate2"
+          name="rating"
           editing={false}
           starCount={10}
-          value={+score}
+          value={+rating}
           className={'app-reviews-list__item__header__score'}
         />
       </div>

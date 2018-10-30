@@ -1,10 +1,10 @@
 const { Review } = require('./../models');
 
-const createReview = async (mbid, content, score, authorId) => {
+const createReview = async (mbid, content, rating, authorId) => {
   let review = await new Review({
-    mbid: mbid,
-    content: content,
-    score: score,
+    mbid,
+    content,
+    rating,
     author: authorId
   });
 

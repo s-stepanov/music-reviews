@@ -1,5 +1,6 @@
 import * as actionTypes from './actionTypes';
 import axios from 'axios';
+import { getAlbumInfo } from "./albumsActions";
 
 export const getReviews = mbid => {
   return dispatch => {
@@ -10,12 +11,13 @@ export const getReviews = mbid => {
   };
 };
 
-export const postReview = (mbid, score, content, authorId) => {
-  return dispatch => {
+export const postReview = (mbid, rating, content, authorId) => {
+  return async dispatch => {
     dispatch(postReviewRequest());
-    axios.post(`/api/reviews`, { mbid, score, content, authorId })
+    await axios.post(`/api/reviews`, { mbid, rating, content, authorId })
       .then(({ data }) => dispatch(postReviewSuccess(data)))
       .catch((err) => dispatch(postReviewFailure(err)));
+    dispatch(getAlbumInfo(mbid));
   };
 };
 

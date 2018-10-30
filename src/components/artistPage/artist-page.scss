@@ -53,6 +53,11 @@
     &__bio {
       padding: 20px;
       font-size: 12px;
+
+      &__toggle {
+        cursor: pointer;
+        color: $primary-material-color;
+      }
     }
 
     &__albums-list {
