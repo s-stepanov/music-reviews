@@ -3,7 +3,7 @@ import * as PropTypes from 'prop-types';
 import { Link, withRouter } from 'react-router-dom';
 import './albums-list-item.scss';
 
-const AlbumsListItem = props => {
+export const AlbumsListItem = props => {
   const { name, image, mbid } = props.album;
 
   return (

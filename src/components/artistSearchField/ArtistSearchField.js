@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 import { searchArtists } from "../../actions/artistsActions";
 import * as PropTypes from "prop-types";
 
-class ArtistSearchField extends Component {
+export class ArtistSearchField extends Component {
   constructor(props) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
