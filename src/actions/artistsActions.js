@@ -4,7 +4,7 @@ import axios from 'axios';
 export const searchArtists = (searchTerm) => {
   return dispatch => {
     dispatch(fetchArtistsList());
-    axios.get(`/api/artist/?artist=${searchTerm}`)
+    return axios.get(`/api/artist/?artist=${searchTerm}`)
       .then(({data}) => dispatch(artistsListFetched(data)))
       .catch(err => dispatch(artistsFetchFailure(err)));
   };
@@ -13,7 +13,7 @@ export const searchArtists = (searchTerm) => {
 export const getArtistInfo = (mbid) => {
   return dispatch => {
     dispatch(fetchArtistInfo());
-    axios.get(`/api/artist/${mbid}`)
+    return axios.get(`/api/artist/${mbid}`)
       .then(({ data }) => dispatch(artistInfoFetched(data)))
       .catch(err => dispatch(artistInfoFetchFailed(err)));
   };

@@ -4,9 +4,9 @@ import axios from 'axios';
 export const getAlbumInfo = mbid => {
   return dispatch => {
     dispatch(fetchAlbum());
-    axios.get(`/api/album/${mbid}`)
+    return axios.get(`/api/album/${mbid}`)
       .then(({ data }) => dispatch(albumFetched(data)))
-      .catch(({ err }) => dispatch(albumFetchFailure(err)))
+      .catch(({ err }) => dispatch(albumFetchFailure(err)));
   };
 };
 
