@@ -19,7 +19,7 @@ const searchArtist = async ctx => {
 const getArtistInfoByMbid = async ctx => {
   const { mbid } = ctx.params;
   try {
-    const data = await ArtistsService.getArtistInfoByMbid(mbid);
+    const data = await ArtistsService.getArtistInfo(mbid);
     ctx.status = 200;
     ctx.body = {
       data

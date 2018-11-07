@@ -1,5 +1,3 @@
-'use strict';
-
 const nconf = require('nconf');
 const path = require('path');
 let configFile = 'development.json';
