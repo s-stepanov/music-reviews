@@ -37,7 +37,6 @@ const ArtistsList = props => {
 
 ArtistsList.propTypes = {
   artists: PropTypes.array,
-  getArtists: PropTypes.func
 };
 
 export default ArtistsList;

@@ -8,7 +8,7 @@ import { Field, formValueSelector, reduxForm } from "redux-form";
 import { renderTextArea } from "../renderTextArea";
 import StarRatingComponent from "react-star-rating-component";
 
-class CreateReviewModal extends Component {
+export class CreateReviewModal extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -75,7 +75,7 @@ class CreateReviewModal extends Component {
                 variant="outlined"
               />
               <button
-                className={'app-create-review-modal__button'}
+                className={'app-create-review-modal__button app-create-review-modal__button--submit'}
                 onClick={this.handleSubmit}
               >Done</button>
             </form>

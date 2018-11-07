@@ -7,7 +7,7 @@ import ReviewsList from "../reviewsList/ReviewsList";
 import CreateReviewModal from "../createReviewModal/CreateReviewModal";
 import StarRatingComponent from "react-star-rating-component";
 
-class AlbumPage extends Component {
+export class AlbumPage extends Component {
   constructor(props) {
     super(props);
     this.state = {

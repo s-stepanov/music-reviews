@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import * as PropTypes from 'prop-types';
 import { logout } from "../../actions/authActions";
 
-class Menu extends Component {
+export class Menu extends Component {
   constructor(props) {
     super(props);
     this.logout = this.logout.bind(this);

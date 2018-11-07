@@ -4,7 +4,7 @@ import { getAlbumInfo } from "./albumsActions";
 
 export const getReviews = mbid => {
   return dispatch => {
-    dispatch(getReiewsRequest());
+    dispatch(getReviewsRequest());
     axios.get(`/api/reviews/${mbid}`)
       .then(({ data }) => dispatch(getReviewsSuccess(data)))
       .catch((err) => dispatch(getReviewsFailure(err)));
@@ -21,7 +21,7 @@ export const postReview = (mbid, rating, content, authorId) => {
   };
 };
 
-export const getReiewsRequest = () => {
+export const getReviewsRequest = () => {
   return {
     type: actionTypes.GET_REVIEWS_REQUEST,
     isFetching: true

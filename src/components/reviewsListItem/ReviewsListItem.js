@@ -31,7 +31,7 @@ const ReviewsListItem = props => {
 ReviewsListItem.propTypes = {
   review: PropTypes.shape({
     mbid: PropTypes.string,
-    score: PropTypes.string,
+    rating: PropTypes.string,
     content: PropTypes.string,
     author: PropTypes.shape({
       name: PropTypes.string,

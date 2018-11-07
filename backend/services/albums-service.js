@@ -27,11 +27,7 @@ const getAlbumInfoByMbid = async mbid => {
 
 const getAverageRating = async mbid => {
   const reviews = await ReviewsService.getReviewsForAlbum(mbid);
-  const rating = reviews.length > 0 ? reviews.reduce((sum, review) => sum + (+review.rating), 0) / reviews.length : null;
-  if (reviews.length) {
-    console.log(reviews.reduce((sum, review) => sum + (+review.rating), 0));
-  }
-  return rating;
+  return reviews.length > 0 ? reviews.reduce((sum, review) => sum + (+review.rating), 0) / reviews.length : null;
 };
 
-module.exports = { getAlbumInfoByMbid };
+module.exports = { getAlbumInfoByMbid, getAverageRating };

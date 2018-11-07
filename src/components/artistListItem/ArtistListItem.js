@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import './artists-list-item.scss';
 import { Link, withRouter } from 'react-router-dom';
 
-const ArtistListItem = props => {
+export const ArtistListItem = props => {
   const { name, image, listenersCount, mbid } = props;
 
   return (

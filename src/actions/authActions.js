@@ -18,7 +18,7 @@ export const logoutRequest = () => {
 export const getCurrentUser = () => {
   return dispatch => {
     dispatch(fetchCurrentUser());
-    axios.get('/api/users/current')
+    return axios.get('/api/users/current')
       .then(({data}) => {
         dispatch(currentUserFetched(data));
       })

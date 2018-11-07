@@ -69,7 +69,7 @@ class ArtistPage extends Component {
   }
 }
 ArtistPage.propTypes = {
-  photo: PropTypes.string,
+  image: PropTypes.string,
   name: PropTypes.string,
   stats: PropTypes.objectOf({
     listeners: PropTypes.string,
