@@ -6,7 +6,8 @@ describe('AlbumsReducer', () => {
     expect(reducer(undefined, {})).toEqual({
       album: {},
       isFetching: false,
-      error: ''
+      error: '',
+      topAlbums: []
     });
   });
 
@@ -17,7 +18,8 @@ describe('AlbumsReducer', () => {
     })).toEqual({
       album: {},
       isFetching: true,
-      error: ''
+      error: '',
+      topAlbums: []
     });
   });
 
@@ -31,7 +33,8 @@ describe('AlbumsReducer', () => {
     })).toEqual({
       album: { name: 'album' },
       isFetching: false,
-      error: ''
+      error: '',
+      topAlbums: []
     });
   });
 
@@ -43,7 +46,8 @@ describe('AlbumsReducer', () => {
     })).toEqual({
       album: {},
       isFetching: false,
-      error: 'error'
+      error: 'error',
+      topAlbums: []
     });
   });
 });

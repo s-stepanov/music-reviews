@@ -57,7 +57,8 @@
     "docker-start": "docker-compose up",
     "docker-clean": "docker-compose stop && docker-compose down --rmi local --volumes --remove-orphans",
     "build": "react-scripts build",
-    "test": "CI=true react-scripts test --env=jsdom",
+    "test-ci": "CI=true react-scripts test --env=jsdom",
+    "test": "react-scripts test",
     "backend-test": "mocha --recursive",
     "eject": "react-scripts eject",
     "coverage": "react-scripts test --env=jsdom --coverage"
@@ -66,7 +67,7 @@
     "extends": "react-app"
   },
   "pre-commit": [
-    "test"
+    "test-ci"
   ],
   "devDependencies": {
     "@babel/core": "^7.1.2",

@@ -39,18 +39,18 @@ describe('ArtistList', () => {
   it('should render itself', () => {
     const { enzymeWrapper } = setup();
 
-    expect(enzymeWrapper.exists('.app-artists-list')).toBeTruthy();
+    expect(enzymeWrapper.exists('.app-list')).toBeTruthy();
   });
 
   it('should render the list of artists', () => {
     const { enzymeWrapper } = setup();
 
-    expect(enzymeWrapper.find('.app-artists-list').children()).toHaveLength(3);
+    expect(enzymeWrapper.find('.app-list').children()).toHaveLength(3);
 
     enzymeWrapper.setProps({
       artists: []
     }, () => {
-      expect(enzymeWrapper.find('.app-artists-list').children()).toHaveLength(0);
+      expect(enzymeWrapper.find('.app-list').children()).toHaveLength(0);
     })
   });
 

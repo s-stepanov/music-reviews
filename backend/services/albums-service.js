@@ -33,6 +33,7 @@ const getAlbumInfoByMbid = async mbid => {
 
 const getTopRatedAlbums = async () => {
   return await Album.find({})
+    .populate('artist')
     .sort({'averageRating': 1})
     .limit(10);
 };
