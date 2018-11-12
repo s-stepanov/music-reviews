@@ -1,8 +1,8 @@
 import React from 'react';
 import ArtistListItem from '../artistListItem/ArtistListItem';
 import PropTypes from 'prop-types';
-import './artists-list.scss';
 import Loader from 'react-loader-spinner';
+import './../../styles/list.scss';
 
 const ArtistsList = props => {
   if (props.isLoading) {
@@ -29,10 +29,15 @@ const ArtistsList = props => {
   });
 
   return (
-    <div className="app-artists-list">
-      {artistsList}
+    <div className={'app-list-container'}>
+      <div className={'app-list-container__title'}>
+        Search Results
+      </div>
+      <div className={'app-list'}>
+        {artistsList}
+      </div>
     </div>
-  )
+  );
 };
 
 ArtistsList.propTypes = {

@@ -35,7 +35,16 @@ export class CreateReviewModal extends Component {
   handleSubmit(e) {
     e.preventDefault();
     const { content, mbid, currentUser } = this.props;
-    this.props.postReview(mbid, this.state.rating, content, currentUser.id);
+
+    const review = {
+      mbid,
+      content,
+      rating: this.state.rating,
+      authorId: currentUser.id
+    };
+    const album = { ...this.props.album };
+    const artist = { ...this.props.artist };
+    this.props.postReview(review, album, artist);
     this.handleClose();
   }
 
@@ -89,7 +98,17 @@ CreateReviewModal.propTypes = {
   isLoading: PropTypes.bool,
   postReview: PropTypes.func,
   content: PropTypes.string,
-  mbid: PropTypes.string
+  mbid: PropTypes.string,
+  album: PropTypes.shape({
+    mbid: PropTypes.string,
+    name: PropTypes.string,
+    image: PropTypes.string,
+  }),
+  artist: PropTypes.shape({
+    mbid: PropTypes.string,
+    name: PropTypes.string,
+    image: PropTypes.string
+  })
 };
 
 const select = formValueSelector('create-review');
@@ -98,13 +117,24 @@ const mapStateToProps = state => {
   return {
     isLoading: state.reviews.isFetching,
     currentUser: state.auth.currentUser,
-    content: select(state, 'review-content')
+    content: select(state, 'review-content'),
+    album: {
+      mbid: state.albums.album.mbid,
+      name: state.albums.album.name,
+      image: state.albums.album.image,
+      wiki: state.albums.album.wiki
+    },
+    artist: {
+      mbid: state.artists.artistInfo.mbid,
+      name: state.artists.artistInfo.name,
+      image: state.artists.artistInfo.image
+    }
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    postReview: (mbid, score, content, authorId) => dispatch(postReview(mbid, score, content, authorId))
+    postReview: (review, album, artist) => dispatch(postReview(review, album, artist))
   };
 };
 

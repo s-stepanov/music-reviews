@@ -10,11 +10,28 @@ const getAlbumInfoByMbid = async ctx => {
       data: album
     };
   } catch (error) {
-    ctx.status = 200;
+    ctx.status = 500;
     ctx.body = {
       error
     };
   }
 };
 
-module.exports = { getAlbumInfoByMbid };
+const getTopRatedAlbums = async ctx => {
+  try {
+    const albums = await AlbumsService.getTopRatedAlbums();
+    ctx.body = {
+      data: albums
+    };
+  } catch (error) {
+    ctx.status = 500;
+    ctx.body = {
+      error
+    };
+  }
+};
+
+module.exports = {
+  getAlbumInfoByMbid,
+  getTopRatedAlbums
+};

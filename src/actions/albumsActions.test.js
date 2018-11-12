@@ -13,6 +13,10 @@ httpMock.onGet(/\/api\/album\/\d+/).reply(200, {
   data: {
     album: 'album'
   }
+}).onGet(/\/api\/albums\/top/).reply(200, {
+  data: [{
+    album: 'album'
+  }]
 });
 
 describe('Albums actions', () => {
@@ -23,10 +27,27 @@ describe('Albums actions', () => {
       .then(() => {
         const storeActions = store.getActions();
         expect(storeActions[0]).toEqual(actions.fetchAlbum());
-        expect(storeActions[1]).toEqual(actions.albumFetched({data: {
+        expect(storeActions[1]).toEqual(actions.albumFetched({
+          data: {
             album: 'album'
-          }}));
+          }
+        }));
       });
+  });
+
+  it('should perform a request to fetch top albums', () => {
+    const store = mockStore({});
+
+    return store.dispatch(actions.getTopAlbums())
+      .then(() => {
+        const storeActions = store.getActions();
+        expect(storeActions[0]).toEqual(actions.fetchTopAlbums());
+        expect(storeActions[1]).toEqual(actions.fetchTopAlbumsSuccess({
+          data: [
+            { album: 'album' }
+          ]
+        }))
+      })
   });
 
   it('should create an action to fetch an album', () => {
@@ -56,5 +77,34 @@ describe('Albums actions', () => {
     };
 
     expect(actions.albumFetchFailure({ error: 'error' })).toEqual(expected);
+  });
+
+  it('should create an action to fetch top albums', () => {
+    expect(actions.fetchTopAlbums()).toEqual({
+      type: actionTypes.FETCH_TOP_ALBUMS,
+      isFetching: true
+    });
+  });
+
+  it('should create an action representing top albums fetch success', () => {
+    expect(actions.fetchTopAlbumsSuccess({
+      data: [{ album: '1' }]
+    })).toEqual({
+      type: actionTypes.FETCH_TOP_ALBUMS_SUCCESS,
+      isFetching: false,
+      payload: {
+        data: [{ album: '1' }]
+      }
+    })
+  });
+
+  it('should create an action representing top albums fetch failure', () => {
+    expect(actions.fetchTopAlbumsFailure({ error: 'error' })).toEqual({
+      type: actionTypes.FETCH_TOP_ALBUMS_FAILURE,
+      isFetching: false,
+      error: {
+        error: 'error'
+      }
+    });
   });
 });

@@ -1,5 +1,6 @@
 const axios = require('axios');
 const config = require('../config/config');
+const { Artist } = require('./../models');
 
 const LASTFM_API_URL = config.get('LASTFM_API_URL');
 const LASTFM_API_KEY = config.get('LASTFM_API_KEY');
@@ -24,9 +25,16 @@ const searchArtist = async searchTerm => {
     .filter(artist => !!artist.mbid.length);
 };
 
-const getArtistInfoByMbid = async mbid => {
-  const ARTIST_REQUEST_URL = `${LASTFM_API_URL}/?method=artist.getinfo&mbid=${mbid}&api_key=${LASTFM_API_KEY}&format=json`;
-  const ALBUMS_REQUEST_URL = `${LASTFM_API_URL}/?method=artist.gettopalbums&mbid=${mbid}&api_key=${LASTFM_API_KEY}&format=json`;
+const getArtistInfo = async (mbid, artistName) => {
+  let ARTIST_REQUEST_URL;
+  let ALBUMS_REQUEST_URL;
+  if (artistName) {
+    ARTIST_REQUEST_URL = `${LASTFM_API_URL}/?method=artist.getinfo&artist=${artistName}&api_key=${LASTFM_API_KEY}&format=json`;
+    ALBUMS_REQUEST_URL = `${LASTFM_API_URL}/?method=artist.gettopalbums&artist=${artistName}&api_key=${LASTFM_API_KEY}&format=json`;
+  } else {
+    ARTIST_REQUEST_URL = `${LASTFM_API_URL}/?method=artist.getinfo&mbid=${mbid}&api_key=${LASTFM_API_KEY}&format=json`;
+    ALBUMS_REQUEST_URL = `${LASTFM_API_URL}/?method=artist.gettopalbums&mbid=${mbid}&api_key=${LASTFM_API_KEY}&format=json`;
+  }
 
   const [ artistResponse, albumsResponse ] = await Promise.all([axios.get(ARTIST_REQUEST_URL),
                                                                 axios.get(ALBUMS_REQUEST_URL)]);
@@ -54,4 +62,21 @@ const getArtistInfoByMbid = async mbid => {
   };
 };
 
-module.exports = { searchArtist, getArtistInfoByMbid };
+const saveArtistInDatabase = async artist => {
+  const createdArtist = new Artist({ ...artist });
+
+  return createdArtist.save();
+};
+
+const findArtistInDatabase = async mbid => {
+  return Artist.findOne({
+    mbid: mbid
+  });
+};
+
+module.exports = {
+  searchArtist,
+  getArtistInfo,
+  saveArtistInDatabase,
+  findArtistInDatabase
+};

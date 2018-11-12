@@ -2,9 +2,10 @@ import React from 'react';
 import * as PropTypes from 'prop-types';
 import { Link, withRouter } from 'react-router-dom';
 import './albums-list-item.scss';
+import StarRatingComponent from "react-star-rating-component";
 
 export const AlbumsListItem = props => {
-  const { name, image, mbid } = props.album;
+  const { name, image, mbid, averageRating } = props.album;
 
   return (
     <div className={'app-albums-list__item'}>
@@ -14,6 +15,15 @@ export const AlbumsListItem = props => {
       <div className={'app-albums-list__item__album-name'}>
         <Link to={`/albums/${mbid}`}>{name}</Link>
       </div>
+      {averageRating && <div className={'app-albums-list__item__rating-container'}>
+        <StarRatingComponent
+          name="rating"
+          editing={false}
+          starCount={10}
+          value={+averageRating}
+          className={'app-album-page__album-info-container__rating-container__rating'}
+        />
+      </div>}
     </div>
   );
 };
@@ -27,7 +37,8 @@ AlbumsListItem.propTypes = {
       mbid: PropTypes.string,
       url: PropTypes.string
     }),
-    image: PropTypes.string
+    image: PropTypes.string,
+    averageRating: PropTypes.string
   })
 };
 

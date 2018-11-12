@@ -17,11 +17,13 @@ const connect = async () => {
     }
     return mongoose;
   } catch (e) {
-    console.log(e);
+    console.error(e);
   }
 };
 
 const User = require('./user');
 const Review = require('./review');
+const Artist = require('./artist');
+const Album = require('./album');
 
-module.exports = { connect, User, Review };
+module.exports = { connect, User, Review, Album, Artist };

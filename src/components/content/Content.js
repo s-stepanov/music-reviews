@@ -4,12 +4,14 @@ import './content.scss';
 import ArtistPageContainer from "../../containers/ArtistPageContainer";
 import AlbumPageContainer from "../../containers/AlbumPageContainer";
 import ArtistsListContainer from "../../containers/ArtistsListContainer";
+import TopAlbumsContainer from "../../containers/TopAlbumsContainer";
 
 const Content = props => {
   return (
     <div className={'app-content'}>
       <Switch>
         <Route exact path={'/'} component={ArtistsListContainer}/>
+        <Route path={'/top-albums'} component={TopAlbumsContainer}/>
         <Route path={'/artists/:mbid'} component={ArtistPageContainer}/>
         <Route path={'/albums/:mbid'} component={AlbumPageContainer}/>
       </Switch>

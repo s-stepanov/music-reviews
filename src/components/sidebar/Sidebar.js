@@ -16,10 +16,12 @@ const Sidebar = () => {
         <Icon className={'app-sidebar__item__icon'}>person</Icon>
         <span className={'app-sidebar__item__text'}>Artists</span>
       </div>
-      <div className={'app-sidebar__item'}>
-        <Icon className={'app-sidebar__item__icon'}>album</Icon>
-        <span className={'app-sidebar__item__text'}>Albums</span>
-      </div>
+      <Link to={'/top-albums'} className={'app-sidebar__link'}>
+        <div className={'app-sidebar__item'}>
+          <Icon className={'app-sidebar__item__icon'}>album</Icon>
+          <span className={'app-sidebar__item__text'}>Albums</span>
+        </div>
+      </Link>
       <div className={'app-sidebar__item'}>
         <Icon className={'app-sidebar__item__icon'}>music_note</Icon>
         <span className={'app-sidebar__item__text'}>Genres</span>

@@ -11,13 +11,13 @@ export const getReviews = mbid => {
   };
 };
 
-export const postReview = (mbid, rating, content, authorId) => {
+export const postReview = (review, album, artist) => {
   return async dispatch => {
     dispatch(postReviewRequest());
-    await axios.post(`/api/reviews`, { mbid, rating, content, authorId })
+    await axios.post(`/api/reviews`, { review, album, artist })
       .then(({ data }) => dispatch(postReviewSuccess(data)))
       .catch((err) => dispatch(postReviewFailure(err)));
-    dispatch(getAlbumInfo(mbid));
+    dispatch(getAlbumInfo(album.mbid));
   };
 };
 

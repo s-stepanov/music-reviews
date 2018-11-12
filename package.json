@@ -57,6 +57,7 @@
     "docker-start": "docker-compose up",
     "docker-clean": "docker-compose stop && docker-compose down --rmi local --volumes --remove-orphans",
     "build": "react-scripts build",
+    "test-ci": "CI=true react-scripts test --env=jsdom",
     "test": "react-scripts test",
     "backend-test": "mocha --recursive",
     "eject": "react-scripts eject",
@@ -65,6 +66,9 @@
   "eslintConfig": {
     "extends": "react-app"
   },
+  "pre-commit": [
+    "test-ci"
+  ],
   "devDependencies": {
     "@babel/core": "^7.1.2",
     "@babel/plugin-transform-modules-commonjs": "^7.1.0",
@@ -85,6 +89,7 @@
     "mini-css-extract-plugin": "^0.4.4",
     "mocha": "^5.2.0",
     "nodemon": "^1.18.4",
+    "pre-commit": "^1.2.2",
     "react-test-renderer": "^16.6.0",
     "redux-mock-store": "^1.5.3",
     "sinon": "^7.1.1",

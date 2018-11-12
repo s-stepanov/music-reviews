@@ -3,7 +3,8 @@ import * as actionTypes from '../actions/actionTypes';
 const initialState = {
   album: {},
   isFetching: false,
-  error: ''
+  error: '',
+  topAlbums: []
 };
 
 export default function (state = initialState, action) {
@@ -23,6 +24,23 @@ export default function (state = initialState, action) {
       return {
         ...state,
         isFetching: action.isFetching,
+        error: action.error
+      };
+    case actionTypes.FETCH_TOP_ALBUMS:
+      return {
+        ...state,
+        isFetching: action.isFetching
+      };
+    case actionTypes.FETCH_TOP_ALBUMS_SUCCESS:
+      return {
+        ...state,
+        isFetching: false,
+        topAlbums: action.payload.data
+      };
+    case actionTypes.FETCH_TOP_ALBUMS_FAILURE:
+      return {
+        ...state,
+        isFetching: false,
         error: action.error
       };
     default:

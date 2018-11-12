@@ -4,7 +4,7 @@ import AlbumsListItem from "../albumsListItem/AlbumsListItem";
 import './albums-list.scss';
 
 const AlbumsList = props => {
-  let { albums } = props;
+  let { albums, listTitle } = props;
   albums = albums ? albums.map(album => {
     return <AlbumsListItem album={album}
                            key={album.mbid}
@@ -13,7 +13,7 @@ const AlbumsList = props => {
 
   return (
     <div>
-      <h4>Albums</h4>
+      <h4>{listTitle ? listTitle : 'Albums'}</h4>
       <div className={'app-albums-list'}>
         {albums}
       </div>
@@ -21,7 +21,8 @@ const AlbumsList = props => {
   );
 };
 AlbumsList.propTypes = {
-  albums: PropTypes.array
+  albums: PropTypes.array,
+  listTitle: PropTypes.string
 };
 
 export default AlbumsList;
